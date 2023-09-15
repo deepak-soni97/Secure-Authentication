@@ -1,0 +1,28 @@
+{
+  "name": "secure-authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepak-soni97/Secure-Authentication.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deepak-soni97/Secure-Authentication/issues"
+  },
+  "homepage": "https://github.com/deepak-soni97/Secure-Authentication#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.1",
+    "nodemon": "^3.0.1"
+  }
+}
