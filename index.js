@@ -8,6 +8,10 @@ const connectDB = require('./src/config/db');
 app.use(express.json());
 connectDB();
 
+
+app.get('/',(req,res)=>{
+    res.status(200).send('welcome')
+})
 app.use('/api',userRouter);
 app.use('/api/auth',authRouter)
 app.listen(PORT,()=>{
