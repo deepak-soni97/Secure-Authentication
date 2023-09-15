@@ -8,6 +8,8 @@ const userSchema = new Schema({
     otp: { type: String,default: '' },
     isVerified: { type: Boolean, required: true},
     devices: [{ deviceName: String, deviceID: String }],
+    resetToken: String,
+  resetTokenExpiration: Date,
 });
 
 
