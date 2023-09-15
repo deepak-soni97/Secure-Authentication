@@ -119,6 +119,45 @@ const userList = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  try {
+    const { email, password, deviceName, deviceID } = req.body;
+
+    // Find the user by username
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+
+    // Compare the provided password with the stored hash
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+
+    // Check if the device is already logged in and replace it
+    const existingDeviceIndex = user.devices.findIndex((device) => device.deviceID === deviceID);
+    if (existingDeviceIndex !== -1) {
+      user.devices.splice(existingDeviceIndex, 1);
+    }
+
+    // Add the current device to the user's list of devices
+    user.devices.push({ deviceName, deviceID });
+    await user.save();
+
+    // Generate and send a JWT token
+    const token = jwt.sign({ username: user.username }, 'secret_key', {
+      expiresIn: '5m', // Token expires in 5 minutes
+    });
+
+    res.status(200).json({ token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+}
 
 
-module.exports = { register, verifyOtp, userList};
+module.exports = { register, verifyOtp, userList,login};

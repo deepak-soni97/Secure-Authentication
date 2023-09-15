@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     otp: { type: String,default: '' },
     isVerified: { type: Boolean, required: true},
-    devices: [{ type: String, required:true }],
+    devices: [{ deviceName: String, deviceID: String }],
 });
 
 
