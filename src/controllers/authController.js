@@ -49,7 +49,6 @@ const login = async (req, res) => {
 const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
-log
         // Find the user by email
         const user = await User.findOne({ email });
 
@@ -67,7 +66,7 @@ log
         await user.save();
 
         // Send a password reset link to the user's email
-        const resetLink = `http://localhost:3000/api/auth/reset-password/${resetToken}`;
+        const resetLink = `https://user-auth-ypz7.onrender.com/api/auth/reset-password/${resetToken}`;
         const mailOptions = {
             from: 'your-email@example.com',
             to: email,
