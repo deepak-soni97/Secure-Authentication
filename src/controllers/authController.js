@@ -68,7 +68,7 @@ const forgotPassword = async (req, res) => {
         // Send a password reset link to the user's email
         const resetLink = `https://user-auth-ypz7.onrender.com/api/auth/reset-password/${resetToken}`;
         const mailOptions = {
-            from: 'your-email@example.com',
+            from: process.env.EMAIL ,
             to: email,
             subject: 'Password Reset Link',
             text: `Click the following link to reset your password: ${resetLink}`,
