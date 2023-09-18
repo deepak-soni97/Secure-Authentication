@@ -7,7 +7,7 @@
 
 > git clone https://github.com/deepak-soni97/Secure-Authentication.git
 
-> cd movies-series
+> cd Secure-Authentication
 
 > npm install
 
